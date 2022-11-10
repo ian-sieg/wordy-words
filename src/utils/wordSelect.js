@@ -16,22 +16,24 @@ const arr = [
     'threeeetwooeee'
 ]
 
-    const smallWords = []
-    const bigWords = []
+// const smallWords = []
+// const bigWords = []
+// const finArr = []
 
-    const finArr = []
-
-    const sortWords = (arr) => {
+const sortWords = (arr) => {
         // eslint-disable-next-line array-callback-return
+        const smallWords = []
+        const bigWords = []
         arr.map((word) => {
             // eslint-disable-next-line no-unused-expressions
             word.length > 5 ? bigWords.push(word) :
             word.length === 5 || word.length === 4 ? smallWords.push(word) : null
         })
-        subWord(bigWords, smallWords)
-    }
+        return [smallWords, bigWords];
+}
 
-    const subWord = (long, short) => {
+const subWord = (long, short) => {
+    const finArr = []
     for (let i = 0; i < long.length; i++) {
         for (let j = 0; j < short.length; j++) {
             //Because the list I am using contains only unique words I do not have to worry about running into duplicate small words
@@ -51,16 +53,25 @@ const arr = [
 }
 
 const pickWordPair = (arr) => {
-  let randomSetIndex = Math.floor(Math.random() * arr.length)
-  let randomShortIndex = Math.floor(Math.random() * arr[randomSetIndex].shortWord.length)
+    let randomSetIndex = Math.floor(Math.random() * arr.length)
+    let randomShortIndex = Math.floor(Math.random() * arr[randomSetIndex].shortWord.length)
     const setOfTheDay = {
         longWord: arr[randomSetIndex].longWord,
         shortWord: arr[randomSetIndex].shortWord[randomShortIndex]
     }
-    finArr.splice(randomSetIndex, 1)
-    return setOfTheDay
+    arr.splice(randomSetIndex, 1)
+    return [setOfTheDay, arr]
 }
 
-sortWords(arr)
 
-const todaySet = pickWordPair(finArr)
+
+// sortWords(arr)
+// subWord(bigWords, smallWords)
+// const todaySet = pickWordPair(finArr)
+console.log(sortWords(arr))
+
+module.exports = {
+    sortWords,
+    subWord,
+    pickWordPair
+}
