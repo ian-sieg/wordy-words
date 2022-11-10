@@ -76,7 +76,7 @@ describe('subWord', () => {
                 shortWord: ['four']
             }
         ]
-        const result = subWord(longWordsTest, shortWordsTest)
+        const result = subWord(shortWordsTest, longWordsTest)
         expect(result).toEqual(wordSetObj)
     })
 
@@ -101,7 +101,7 @@ describe('subWord', () => {
                 shortWord: ['four','five']
             }
         ]
-        const result = subWord(longWordsTest, shortWordsTest)
+        const result = subWord(shortWordsTest, longWordsTest)
         expect(result).toEqual(wordSetObj)
     })
 })
