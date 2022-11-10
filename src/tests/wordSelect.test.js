@@ -106,6 +106,7 @@ describe('subWord', () => {
     })
 })
 
+// creates a global Math.random for the purposes of the test that is set to 0.5
 const jestMath = Object.create(global.Math)
 jestMath.random = () => 0.5
 global.Math = jestMath
